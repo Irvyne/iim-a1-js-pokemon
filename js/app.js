@@ -25,8 +25,25 @@ const trainers = [
     }
 ];
 
-let game = document.getElementById("game");
+let game = document.getElementById("trainers");
 
+game.innerHTML = `
+    ${trainers.map((t, i) => `
+        <div onclick="selectTrainer(this)" data-index="${i}">
+            <h2>${t.name}</h2>
+            <ul>
+                ${t.pokemons.map(p => `<li>${p.name} with ${p.attack} attack and ${p.hp}hp</li>`).join('')}
+            </ul>
+        </div>
+    `).join('')}
+`;
+
+function selectTrainer(element) {
+    let pokemons = trainers[element.getAttribute("data-index")].pokemons;
+    // Get a random element from an array
+}
+
+/*
 for (let i = 0; i < trainers.length; i++) {
     let trainer = trainers[i];
     let pokemons = trainer.pokemons;
@@ -52,4 +69,4 @@ for (let i = 0; i < trainers.length; i++) {
     trainerHtml.appendChild(listPokemons);
     game.appendChild(trainerHtml);
 }
-
+*/
